@@ -88,6 +88,7 @@ export function GameFrame({ src, title, cover }: GameFrameProps) {
                             title={title}
                             className="absolute inset-0 w-full h-full border-0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-orientation-lock allow-pointer-lock"
                             allowFullScreen
                         />
                         {showTip && (
