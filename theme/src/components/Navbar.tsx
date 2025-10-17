@@ -57,8 +57,8 @@ export function Navbar({ meta }: NavbarProps) {
     // 从 URL 路径中提取当前语言（因为静态导出模式下 router.locale 是 undefined）
     const getLocaleFromPath = React.useCallback((path: string): string => {
         const match = path.match(/^\/([a-z]{2})(\/|$)/);
-        return match ? match[1] : themeConfig?.i18n?.defaultLocale || 'en';
-    }, [themeConfig]);
+        return match ? match[1] : 'en';
+    }, []);
 
     // 使用 state 跟踪当前 locale，确保路由变化时能正确更新
     const [currentLocale, setCurrentLocale] = React.useState(
