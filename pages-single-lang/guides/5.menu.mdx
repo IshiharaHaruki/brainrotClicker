@@ -1,0 +1,129 @@
+---
+title: 5.菜单配置说明
+description: 如何配置网站的导航菜单
+---
+
+# 菜单配置说明
+
+网站的导航菜单通过 `pages/[locale]/_meta.js` 文件进行配置，支持多级菜单和各种自定义选项。
+
+## 基本结构
+
+```javascript
+export default {
+  // 首页配置
+  index: {
+    title: "Home",          // 显示的标题
+    type: "page",           // 类型：page 表示页面
+    icon: "icon-name",      // 图标名称
+    href: "/en",            // 链接地址
+  },
+  
+  // 下拉菜单配置
+  categories: {
+    title: "Categories",    // 菜单标题
+    type: "menu",           // 类型：menu 表示下拉菜单
+    icon: "icon-name",      // 菜单图标
+    items: {                // 子菜单项
+      item1: {
+        title: "子项标题",
+        icon: "icon-name",
+        href: "/path"
+      }
+    }
+  },
+  
+  // 普通页面配置
+  download: {
+    title: "Download",      // 页面标题
+    type: "page",           // 类型：page
+    icon: "icon-name",      // 图标
+    href: "/en/download",   // 链接
+  }
+}
+```
+
+## 配置选项
+
+### 1. 页面类型 (type)
+
+- `page`: 普通页面链接
+- `menu`: 下拉菜单
+
+### 2. 通用属性
+
+- `title`: 显示的标题文本
+- `icon`: Material Symbols 图标名称
+- `href`: 链接地址（可选）
+
+### 3. 菜单特有属性
+
+- `items`: 子菜单项配置对象
+
+## 使用示例
+
+### 1. 基础页面
+
+```javascript
+about: {
+  title: "关于我们",
+  type: "page",
+  icon: "material-symbols:info",
+  href: "/en/about"
+}
+```
+
+### 2. 下拉菜单
+
+```javascript
+games: {
+  title: "游戏分类",
+  type: "menu",
+  icon: "material-symbols:games",
+  items: {
+    action: {
+      title: "动作游戏",
+      icon: "material-symbols:sports-martial-arts",
+      href: "/en/games/action"
+    },
+    puzzle: {
+      title: "益智游戏",
+      icon: "material-symbols:extension",
+      href: "/en/games/puzzle"
+    }
+  }
+}
+```
+
+### 3. 外部链接
+
+```javascript
+github: {
+  title: "GitHub",
+  type: "page",
+  icon: "material-symbols:code",
+  href: "https://github.com/your-repo"
+}
+```
+
+## 注意事项
+
+1. **图标使用**：
+   - 使用 Material Symbols 图标
+   - 可在 [Iconify](https://icon-sets.iconify.design/material-symbols/) 查找图标
+
+2. **路径配置**：
+   - 内部页面使用相对路径：`/en/path`
+   - 外部链接使用完整 URL
+
+3. **菜单层级**：
+   - 支持两级菜单结构
+   - 子菜单项不支持再嵌套
+
+4. **响应式设计**：
+   - 桌面端显示完整菜单
+   - 移动端自动转为抽屉式菜单
+
+5. **多语言支持**：
+   - 路径需要包含语言代码：`/en/`、`/zh/` 等
+   - 标题可以根据语言设置不同文本

@@ -1,0 +1,177 @@
+---
+title: 3.基础配置
+description: Game Launch Boost 的基础配置说明
+---
+
+# 基础配置指南
+
+## 项目结构
+
+```
+.
+├── config/              # 配置文件目录
+│   └── site.js         # 网站核心配置
+├── src/                # 网站代码源码
+│   ├── theme/          # 主题相关
+│   │   ├── layouts/    # 页面布局模板
+│   │   └── types.ts    # TypeScript 类型定义
+│   └── components/     # 公共组件
+├── pages/              # 页面文件
+│   ├── _app.tsx       # 应用入口配置
+│   ├── _document.tsx  # 文档结构配置
+│   └── index.tsx      # 首页重定向
+├── public/            # 静态资源
+│   ├── favicon.ico    # 网站图标
+│   ├── robots.txt     # 搜索引擎爬虫配置
+│   └── sitemap.xml    # 网站地图
+└── theme.config.jsx   # 主题配置文件
+```
+
+## 网站配置文件说明
+
+### 1. 核心配置文件 (config/site.js)
+
+这是网站的核心配置文件，包含三个主要部分：
+
+```javascript
+// 1. 网站基础配置
+const SITE_CONFIG = {
+  url: "https://example.com",      // 网站域名
+  title: "Game Launch Boost",      // 网站标题
+  twitter: "@example",            // Twitter 账号
+  siteName: "Game Launch Boost",  // 网站名称
+};
+
+// 2. SEO 优先级配置
+const URL_PRIORITIES = [
+  {
+    pattern: "^/$",           // 首页
+    priority: 1.0,           // 优先级 (0.0 到 1.0)
+    changefreq: "daily",     // 更新频率
+  },
+  {
+    pattern: "^/games",      // 游戏页面
+    priority: 0.9,
+    changefreq: "weekly",
+  },
+  {
+    pattern: "^/guides",     // 指南页面
+    priority: 0.8,
+    changefreq: "weekly",
+  },
+  // ... 其他页面配置
+];
+```
+
+### 2. 主题配置文件 (theme.config.jsx)
+
+主题配置文件引用核心配置并添加额外的主题相关设置：
+
+```javascript
+import { SITE_CONFIG } from "./config/site";
+
+export default {
+  // 继承基础配置
+  ...SITE_CONFIG,
+
+  // Logo 配置
+  logo: <span>{SITE_CONFIG.siteName}</span>,
+
+  // SEO 配置
+  head: () => {
+    // ... SEO 相关标签配置
+  },
+
+  // 导航配置
+  navigation: {
+    prev: true,  // 显示上一页
+    next: true,  // 显示下一页
+  },
+
+  // 页脚配置
+  footer: {
+    text: `${new Date().getFullYear()} © ${SITE_CONFIG.siteName}`,
+  },
+};
+```
+
+## 配置更新步骤
+
+### 1. 更新网站基本信息
+
+修改 `config/site.js` 中的 `SITE_CONFIG`：
+
+```javascript
+const SITE_CONFIG = {
+  url: "https://your-domain.com",    // 更新为你的域名
+  title: "你的网站标题",
+  twitter: "@你的推特账号",
+  siteName: "你的网站名称",
+};
+```
+
+### 2. 更新 SEO 优先级
+
+根据你的网站结构修改 `URL_PRIORITIES`：
+
+```javascript
+const URL_PRIORITIES = [
+  // 添加新的页面类型
+  {
+    pattern: "^/blog",
+    priority: 0.8,
+    changefreq: "weekly",
+  },
+  // ... 其他页面
+];
+```
+
+### 3. 更新网站标识
+
+1. 替换 Logo：
+   - 更新 `theme.config.jsx` 中的 `logo` 配置
+   - 可以使用图片或自定义组件
+
+2. 更换网站图标：
+   - 替换 `public` 目录下的图标文件：
+     - favicon.ico
+     - favicon-16x16.png
+     - favicon-32x32.png
+     - apple-touch-icon.png
+
+### 4. 配置第三方服务
+
+在 `pages/_app.tsx` 文件中配置服务 ID：
+
+```tsx
+const GA_MEASUREMENT_ID = '你的GA跟踪ID';
+const ADSENSE_ID = '你的AdSense ID';
+const CLARITY_ID = '你的Clarity ID';
+```
+
+### 5. SEO 相关文件
+
+1. robots.txt：
+   - 自动根据配置生成
+   - 可以在 `next-sitemap.config.js` 中自定义规则
+
+2. sitemap.xml：
+   - 自动根据页面生成
+   - 包含多语言替代链接
+   - 使用配置的优先级和更新频率
+
+## 注意事项
+
+1. **配置文件修改后需要重新构建**：
+   ```bash
+   pnpm build
+   ```
+
+2. **环境变量更改**：
+   - 开发环境：重启开发服务器
+   - 生产环境：重新部署
+
+3. **SEO 优化建议**：
+   - 合理设置更新频率
+   - 适当调整优先级
+   - 定期更新网站地图

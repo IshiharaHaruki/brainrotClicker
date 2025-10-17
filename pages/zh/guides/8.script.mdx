@@ -1,0 +1,152 @@
+---
+title: 8.excel-to-mdx Python 脚本
+description: 如何使用脚本批量导入游戏
+---
+
+# 批量导入工具使用说明
+
+这个 python 脚本是我自己开发自己使用的，可以批量将 CSV 文件中的游戏数据转换为 MDX 文件，然后自动生成对应的目录结构
+
+## CSV 转 MDX 脚本
+
+我提供了一个 Python 脚本，可以将 CSV 文件中的游戏数据批量转换为 MDX 文件。
+
+### 脚本位置
+
+```bash
+plugin & script/csv-to-files.py
+```
+
+### CSV 文件格式要求
+
+CSV 文件需要包含以下列（也可以自己修改文件脚本配置）：
+
+```csv
+title,cover,game,cate,content
+街霸,/images/street-fighter.jpg,https://game-url.com,games/fighting,游戏介绍内容
+```
+
+必填字段说明：
+- `title`: 游戏标题
+- `cate`: 游戏分类路径（必须以 `games/` 开头）
+- `game`: 游戏链接
+- `cover`: 游戏封面图片链接
+- `content`: 游戏介绍（可选）
+
+### 使用方法
+
+1. **准备 CSV 文件**
+
+创建一个包含游戏信息的 CSV 文件，例如 `games.csv`：
+```csv
+title,cover,game,cate,content
+Street Fighter,/images/sf.jpg,https://game.com/sf,games/fighting,经典格斗游戏
+Tetris,/images/tetris.jpg,https://game.com/tetris,games/puzzle,俄罗斯方块
+```
+
+2. **修改脚本配置**
+
+打开 `csv-to-files.py`，修改输入输出路径：
+```python
+if __name__ == "__main__":
+    csv_file = "path/to/your/games.csv"        # CSV 文件路径
+    output_dir = "path/to/your/pages/games"    # 输出目录路径
+```
+
+3. **运行脚本**
+
+```bash
+python csv-to-files.py
+```
+
+### 文件生成规则
+
+1. **文件名生成**：
+   - 根据游戏标题自动生成
+   - 转换为小写
+   - 空格替换为横线
+   - 移除特殊字符
+   - 例如：`Street Fighter` → `street-fighter.mdx`
+
+2. **目录结构**：
+   - 根据 `cate` 字段自动创建目录
+   - 例如：`games/fighting/street-fighter.mdx`
+
+3. **生成的文件格式**：
+```mdx
+---
+title: 游戏标题
+cover: 封面图片路径
+game: 游戏链接
+description: 
+date: 2024-03-21
+---
+
+# 游戏标题
+
+游戏介绍内容...
+```
+
+### 注意事项
+
+1. **路径要求**：
+   - CSV 文件使用 UTF-8 编码
+   - 分类路径必须以 `games/` 开头
+   - 确保输出目录有写入权限
+
+2. **文件命名**：
+   - 避免使用特殊字符
+   - 文件名会自动规范化
+   - 重复的文件名会被覆盖
+
+3. **内容格式**：
+   - 支持 Markdown 格式的内容
+   - 如果没有提供内容，会使用默认文本
+   - 标题会自动从 frontmatter 中的 title 生成
+
+4. **日期处理**：
+   - 自动使用当前日期
+   - 格式为 `YYYY-MM-DD`
+
+### 示例用法
+
+1. **基础用法**：
+```bash
+python csv-to-files.py
+```
+
+2. **批量导入示例**：
+```csv
+title,cover,game,cate,content
+街霸,/images/sf.jpg,https://game.com/sf,games/fighting,经典格斗游戏
+俄罗斯方块,/images/tetris.jpg,https://game.com/tetris,games/puzzle,考验技巧的益智游戏
+```
+
+3. **生成的文件结构**：
+```
+pages/
+└── games/
+    ├── fighting/
+    │   └── street-fighter.mdx
+    └── puzzle/
+        └── tetris.mdx
+```
+
+### 扩展建议
+
+1. **自动化工作流**：
+   - 可以配合 GitHub Actions 使用
+   - 定期从数据源更新游戏
+   - 自动提交变更
+
+2. **数据验证**：
+   - 添加数据验证逻辑
+   - 检查必填字段
+   - 验证 URL 格式
+   - 检查图片链接有效性
+
+3. **内容增强**：
+   - 添加更多元数据字段
+   - 支持标签系统
+   - 添加游戏评分
+   - 支持多语言内容

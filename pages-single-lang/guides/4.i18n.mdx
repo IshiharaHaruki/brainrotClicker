@@ -1,0 +1,171 @@
+---
+title: 4.多语言支持
+description: 如何配置和使用多语言功能
+---
+
+# 多语言支持指南
+
+## 配置说明
+
+### 基础配置
+
+在 `config/site.js` 中配置多语言支持：
+
+```javascript
+// 多语言配置
+const SUPPORTED_LOCALES = {
+  en: {
+    name: "English",        // 语言切换器中显示的名称
+    localeName: "English",  // 本地化显示名称
+    ogLocale: "en_US",     // Open Graph 协议使用的语言代码
+    htmlLang: "en",        // HTML lang 属性使用的语言代码
+    titleSuffix: "- Game Launch Boost", // 页面标题后缀
+  },
+  zh: {
+    name: "中文",
+    localeName: "简体中文",
+    ogLocale: "zh_CN",
+    htmlLang: "zh",
+    titleSuffix: "- Game Launch Boost",
+    isDefault: true,       // 设置为默认语言
+  },
+};
+```
+
+## 添加新语言
+
+### 1. 配置新语言
+
+在 `config/site.js` 中添加新语言配置：
+
+```javascript
+const SUPPORTED_LOCALES = {
+  // ... 现有语言配置
+
+  // 添加日语支持
+  ja: {
+    name: "日本語",          // 显示名称
+    localeName: "日本語",    // 本地化名称
+    ogLocale: "ja_JP",      // Open Graph 语言代码
+    htmlLang: "ja",         // HTML 语言代码
+    titleSuffix: "- Game Launch Boost",
+  },
+
+  // 添加韩语支持
+  ko: {
+    name: "한국어",
+    localeName: "한국어",
+    ogLocale: "ko_KR",
+    htmlLang: "ko",
+    titleSuffix: "- Game Launch Boost",
+  },
+};
+```
+
+### 2. 创建语言目录
+
+为新语言创建对应的内容目录：
+
+```bash
+mkdir -p pages/ja    # 创建日语目录
+mkdir -p pages/ko    # 创建韩语目录
+```
+
+### 3. 复制基础文件
+
+1. 从默认语言复制必要文件：
+```bash
+# 复制首页
+cp pages/zh/index.mdx pages/ja/
+cp pages/zh/index.mdx pages/ko/
+
+# 复制目录结构
+cp -r pages/zh/games pages/ja/
+cp -r pages/zh/guides pages/ja/
+```
+
+2. 必须复制的文件：
+- `index.mdx` (首页)
+- `404.mdx` (错误页)
+- `_meta.json` (导航配置)
+
+### 4. 翻译内容
+
+1. **翻译 frontmatter**：
+```mdx
+---
+title: ゲームランチブースト    # 翻译标题
+description: ゲームの紹介サイト  # 翻译描述
+---
+```
+
+2. **翻译导航配置** (`_meta.json`):
+```json
+{
+  "index": {
+    "title": "ホーム"
+  },
+  "games": {
+    "title": "ゲーム"
+  }
+}
+```
+
+3. **翻译页面内容**
+
+
+## 内容管理
+
+### 1. 目录结构
+
+多语言内容采用目录结构管理：
+
+```
+pages/
+├── en/                     # 英文内容
+│   ├── index.mdx          # 英文首页
+│   ├── games/             # 游戏目录
+│   │   ├── category-1/    # 分类目录
+│   │   └── category-2/    # 分类目录
+│   └── guides/            # 指南目录
+│       ├── 1.getting-started.mdx
+│       └── 2.configuration.mdx
+└── zh/                     # 中文内容（结构与英文相同）
+```
+
+### 2. 内容文件规范
+
+#### 2.1 基本要求
+
+每个语言版本的 MDX 文件必须包含：
+
+```mdx
+---
+title: 页面标题
+description: 页面描述
+---
+
+# 内容标题
+
+页面内容...
+```
+
+#### 2.2 元数据同步规则
+
+```mdx
+// en/games/game-1.mdx
+---
+title: Street Fighter      # 可以翻译
+description: A classic    # 可以翻译
+game: https://game.com    # 保持相同
+cover: /images/sf.jpg     # 保持相同
+---
+
+// zh/games/game-1.mdx
+---
+title: 街霸              # 已翻译
+description: 经典游戏    # 已翻译
+game: https://game.com   # 与英文相同
+cover: /images/sf.jpg    # 与英文相同
+---
+```

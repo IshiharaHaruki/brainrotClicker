@@ -1,0 +1,105 @@
+---
+title: 6.主题定制
+description: 如何扩展和自定义 Game Launch Boost 主题
+---
+
+# 主题定制指南
+
+## 主题结构
+
+主题文件位于 `src/theme` 目录下：
+
+```
+src/theme/
+├── layouts/           # 页面布局模板
+│   ├── default.tsx   # 默认布局
+│   ├── landing.tsx   # 落地页布局
+│   ├── category.tsx  # 分类页布局
+│   ├── featured.tsx  # 特色页布局
+│   └── index.ts      # 布局导出文件
+├── types.ts          # 类型定义
+└── index.tsx         # 主题入口
+```
+
+## 创建新布局
+
+1. 创建布局文件：
+
+```typescript
+// src/theme/layouts/custom.tsx
+import React from 'react';
+import type { LayoutProps } from '@/theme/types';
+
+export function CustomLayout({ children, frontMatter }: LayoutProps) {
+    return (
+        <main className="min-h-screen bg-theme-bg-primary">
+            <div className="max-w-7xl mx-auto px-4 py-6">
+                <article className="prose dark:prose-invert">
+                    {children}
+                </article>
+            </div>
+        </main>
+    );
+}
+```
+
+2. 注册布局：
+
+```typescript
+// src/theme/layouts/index.ts
+export const layouts: Layouts = {
+    default: DefaultLayout,
+    custom: CustomLayout,  // 添加新布局
+};
+```
+
+## 布局属性
+
+```typescript
+interface LayoutProps {
+    children: ReactNode;        // 页面内容
+    frontMatter: {             // 页面前置数据
+        title?: string;        // 页面标题
+        description?: string;  // 页面描述
+        game?: string;        // 游戏链接
+        cover?: string;       // 封面图片
+        [key: string]: any;   // 其他自定义属性
+    };
+    themeConfig?: ThemeConfig; // 主题配置
+    pageMap: any[];           // 页面地图数据
+}
+```
+
+## 主题功能扩展
+
+### 添加新组件
+
+1. 在 `src/components` 创建组件
+2. 在布局中使用组件
+
+### 扩展主题配置
+
+1. 扩展类型定义：
+```typescript
+// src/theme/types.ts
+interface ThemeConfig {
+    // 添加新配置项
+}
+```
+
+2. 添加配置：
+```jsx
+// theme.config.jsx
+export default {
+    // 添加新配置
+}
+```
+
+## 注意事项
+
+1. 布局组件应该是纯函数组件
+2. 使用 TypeScript 类型定义确保类型安全
+3. 遵循项目现有的样式系统和主题变量
+4. 确保布局组件支持深色模式
+5. 考虑响应式设计
+6. 使用现有的组件保持一致性 

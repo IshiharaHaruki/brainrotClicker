@@ -1,0 +1,132 @@
+---
+title: Landing 布局使用说明
+layout: landing
+description: Landing 布局是一个功能丰富的着陆页布局，支持多个内容区块和灵活的配置选项
+
+hero:
+  game: https://turbowarp.org/965266120/embed  # 可选：展示游戏
+  # background: /images/hero-bg.jpg            # 可选：背景图片（与 game 二选一）
+
+cta:
+  text: 查看示例
+  link: /zh/games
+secondaryCta:
+  text: 了解更多
+  link: /zh/about
+
+features:
+  title: Landing 布局特性
+  description: 了解 Landing 布局提供的强大功能
+  items:
+    - title: Hero 区块
+      description: 支持游戏展示或背景图片
+      icon: "🎮"
+    - title: 响应式设计
+      description: 完美适配各种屏幕尺寸
+      icon: "📱"
+    - title: 深色模式
+      description: 自动适配深色主题
+      icon: "🌙"
+    - title: 动画效果
+      description: 丰富的交互动画
+      icon: "✨"
+    - title: 模块化设计
+      description: 灵活的内容区块组合
+      icon: "🧩"
+    - title: 简单配置
+      description: 通过 frontmatter 轻松配置
+      icon: "⚙️"
+
+faq:
+  title: 常见问题
+  description: 关于 Landing 布局的常见问题解答
+  items:
+    - question: 如何配置 Hero 区块？
+      answer: Hero 区块支持两种模式：游戏展示（配置 game）或背景图片（配置 background），两者只能选择其一。
+    - question: 是否支持自定义样式？
+      answer: 布局使用 Tailwind CSS，支持通过主题配置和自定义类名进行样式定制。
+    - question: 内容区块是否必须？
+      answer: 所有区块都是可选的，你可以根据需要配置想要显示的区块。
+    - question: 如何添加更多功能？
+      answer: 可以通过扩展 landing.tsx 布局组件来添加新的功能区块。
+
+bottomCta:
+  title: 开始使用 Landing 布局
+  description: 通过简单的配置创建专业的着陆页
+  text: 查看文档
+  link: /zh/landing
+---
+
+## Landing 布局配置说明
+
+Landing 布局是一个专门为着陆页设计的布局，提供了多个可配置的内容区块。
+
+### 布局结构
+
+1. **Hero 区块**
+   - 支持游戏展示或背景图片
+   - 大标题和描述文本
+   - 主要和次要 CTA 按钮
+
+2. **Features 区块**
+   - 网格布局展示特性
+   - 支持图标和描述
+   - 自动响应式布局
+
+3. **FAQ 区块**
+   - 常见问题列表
+   - 支持问答格式
+   - 简洁的展示方式
+
+4. **Bottom CTA 区块**
+   - 底部行动号召
+   - 引导用户操作
+   - 醒目的按钮设计
+
+### Frontmatter 配置
+
+每个区块都通过 frontmatter 进行配置：
+
+```yaml
+hero:
+  game: URL          # 游戏链接
+  background: URL    # 背景图片
+
+features:
+  title: 标题
+  description: 描述
+  items:
+    - title: 特性标题
+      description: 特性描述
+      icon: emoji/URL
+
+faq:
+  title: FAQ 标题
+  description: FAQ 描述
+  items:
+    - question: 问题
+      answer: 答案
+
+bottomCta:
+  title: 标题
+  description: 描述
+  text: 按钮文本
+  link: 链接地址
+```
+
+### 使用建议
+
+1. **内容组织**
+   - 合理安排各区块顺序
+   - 保持视觉层次清晰
+   - 突出重要信息
+
+2. **视觉效果**
+   - 选择合适的图片和图标
+   - 注意颜色搭配
+   - 保持风格统一
+
+3. **响应式考虑**
+   - 测试不同屏幕尺寸
+   - 确保内容可读性
+   - 优化移动端体验

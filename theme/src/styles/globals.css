@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #f2f2f2;
+  --bg-secondary: #f9fafb;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --border-color: #e5e7eb;
+}
+
+.dark {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #242424;
+  --text-primary: #ffffff;
+  --text-secondary: #f2f2f2;
+  --border-color: #2a2a2a;
+}
+
+@layer base {
+  body {
+    @apply bg-theme-bg-primary text-theme-text-primary transition-colors;
+  }
+
+  body.dark {
+    @apply bg-[#1a1a1a];
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply px-4 py-2 text-theme-text-secondary hover:text-primary-500 font-medium text-sm transition-colors relative
+    after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-0 after:bg-primary-500
+    after:transition-all hover:after:w-full after:shadow-[0_0_10px_rgba(129,200,105,0.3)];
+  }
+  
+  .btn-primary {
+    @apply px-6 py-2 bg-primary-500 text-white rounded-full font-medium text-sm
+    shadow-lg shadow-primary-500/30 hover:shadow-primary-500/50 hover:bg-primary-400
+    transform hover:-translate-y-0.5 transition-all duration-200
+    border border-primary-400/20 backdrop-blur-sm;
+  }
+
+  .prose {
+    @apply max-w-none;
+  }
+  
+  .prose h1 {
+    @apply text-4xl font-bold mb-8
+    bg-gradient-to-r from-primary-500 to-primary-400 bg-clip-text text-transparent
+    drop-shadow-sm;
+  }
+  
+  .prose h2 {
+    @apply text-2xl font-semibold text-theme-text-primary mt-12 mb-6 pb-2
+    border-b border-theme-border;
+  }
+  
+  .prose h3 {
+    @apply text-xl font-medium text-primary-500 mt-8 mb-4;
+  }
+  
+  .prose p {
+    @apply text-theme-text-secondary leading-relaxed mb-6;
+  }
+  
+  .prose a {
+    @apply text-primary-500 hover:text-primary-400 font-medium transition-colors
+    hover:underline decoration-2 decoration-primary-300;
+  }
+  
+  .prose ul {
+    @apply space-y-2 my-6 list-none pl-6;
+  }
+  
+  .prose ul li {
+    @apply relative text-theme-text-secondary;
+  }
+
+  .prose ul li::before {
+    @apply content-[''] absolute w-2 h-2 -left-4 top-2.5
+    bg-primary-500 rounded-full;
+  }
+  
+  .prose ol {
+    @apply space-y-2 my-6 list-decimal pl-6;
+  }
+  
+  .prose li {
+    @apply text-theme-text-secondary;
+  }
+
+  .prose code {
+    @apply text-primary-500 bg-primary-500/5 px-1.5 py-0.5 rounded text-sm;
+  }
+
+  .prose pre {
+    @apply bg-theme-bg-secondary text-theme-text-primary p-4 rounded-lg my-6 overflow-auto
+    border border-theme-border shadow-sm;
+  }
+
+  .prose pre code {
+    @apply bg-transparent text-inherit p-0 border-0;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-primary-500 bg-gradient-to-r from-primary-500/5 to-transparent 
+    pl-4 py-2 my-6 italic;
+  }
+
+  .prose table {
+    @apply w-full my-6 overflow-hidden rounded-lg border border-theme-border;
+  }
+
+  .prose th {
+    @apply bg-theme-bg-secondary text-theme-text-primary font-semibold text-left p-3
+    border-b border-theme-border;
+  }
+
+  .prose td {
+    @apply p-3 text-theme-text-secondary border-b border-theme-border
+    bg-theme-bg-primary hover:bg-theme-bg-secondary transition-colors;
+  }
+
+} 
