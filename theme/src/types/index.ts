@@ -9,6 +9,7 @@ export interface PageOpts {
     description?: string;
     game?: string;
     cover?: string;
+    thumbnail?: string;
     [key: string]: any;
   };
   pageMap: any[];
@@ -38,7 +39,7 @@ export interface MainProps {
 
 export interface LayoutProps {
   children: ReactNode;
-  frontMatter: PageOpts["frontMatter"];
+  frontMatter: FrontMatter;
   themeConfig?: ThemeConfig;
   pageMap: any[];
 }

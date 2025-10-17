@@ -3,15 +3,11 @@ import { useRouter } from 'nextra/hooks';
 import { GameFrame } from '../components/GameFrame';
 import { ShareButtons } from '../components/ShareButtons';
 import { Breadcrumb } from '../components/Breadcrumb';
+import type { FrontMatter } from '../types';
 
 interface DefaultLayoutProps {
     children: React.ReactNode;
-    frontMatter: {
-        title?: string;
-        description?: string;
-        game?: string;
-        cover?: string;
-    };
+    frontMatter: FrontMatter;
 }
 
 export function DefaultLayout({ children, frontMatter }: DefaultLayoutProps) {
