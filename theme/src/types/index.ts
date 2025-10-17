@@ -39,7 +39,7 @@ export interface MainProps {
 
 export interface LayoutProps {
   children: ReactNode;
-  frontMatter: FrontMatter;
+  frontMatter: PageOpts["frontMatter"];
   themeConfig?: ThemeConfig;
   pageMap: any[];
 }
