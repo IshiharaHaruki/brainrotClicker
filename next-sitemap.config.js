@@ -29,14 +29,18 @@ const defaultConfig = {
   siteUrl: SITE_CONFIG.url,
   generateRobotsTxt: true,
   changefreq: "weekly",
-  exclude: ["*/404", "*/500", "*/404.html", "*/500.html"],
+  exclude: ["*/404", "*/500", "*/404.html", "*/500.html", "*/_next/*", "*/api/*"],
   robotsTxtOptions: {
     policies: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/404", "/500"],
+        disallow: ["/404", "/500", "/_next/", "/api/"],
       },
+    ],
+    additionalSitemaps: [
+      `${SITE_CONFIG.url}/sitemap.xml`,
+      `${SITE_CONFIG.url}/sitemap-0.xml`,
     ],
   },
   transform: async (config, path) => {
@@ -55,6 +59,20 @@ const defaultConfig = {
 // 为启用多语言的情况创建配置
 const i18nConfig = {
   ...defaultConfig,
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/404", "/500", "/_next/", "/api/"],
+      },
+    ],
+    additionalSitemaps: [
+      `${SITE_CONFIG.url}/sitemap.xml`,
+      `${SITE_CONFIG.url}/sitemap-0.xml`,
+      ...SUPPORTED_LANGUAGES.map(lang => `${SITE_CONFIG.url}/${lang}/sitemap.xml`),
+    ],
+  },
   transform: async (config, path) => {
     path = path.replace(/\/+/g, "/");
     const cleanPath = path.replace(/^\//, "");
