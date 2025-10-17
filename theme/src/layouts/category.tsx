@@ -60,6 +60,7 @@ export function CategoryLayout({ children, pageMap }: CategoryLayoutProps) {
     // });
     // console.log('=== End Debug ===');
 
+    
     // 构建分页链接
     const buildPageUrl = (page: number) => {
         const { pathname, query } = router;
