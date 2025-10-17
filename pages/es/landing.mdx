@@ -1,0 +1,132 @@
+---
+title: Guía de Uso del Layout Landing
+layout: landing
+description: El layout Landing es un diseño de página de destino rico en funciones que admite múltiples bloques de contenido y opciones de configuración flexibles
+
+hero:
+  game: https://turbowarp.org/965266120/embed  # Opcional: mostrar juego
+  # background: /images/hero-bg.jpg            # Opcional: imagen de fondo (elige entre game o background)
+
+cta:
+  text: Ver Ejemplos
+  link: /es/games
+secondaryCta:
+  text: Conoce Más
+  link: /es/about
+
+features:
+  title: Características del Layout Landing
+  description: Conoce las potentes funciones que ofrece el layout Landing
+  items:
+    - title: Bloque Hero
+      description: Admite mostrar juegos o imágenes de fondo
+      icon: "🎮"
+    - title: Diseño Responsivo
+      description: Se adapta perfectamente a todos los tamaños de pantalla
+      icon: "📱"
+    - title: Modo Oscuro
+      description: Se adapta automáticamente al tema oscuro
+      icon: "🌙"
+    - title: Efectos de Animación
+      description: Animaciones interactivas enriquecidas
+      icon: "✨"
+    - title: Diseño Modular
+      description: Combinación flexible de bloques de contenido
+      icon: "🧩"
+    - title: Configuración Simple
+      description: Fácil configuración mediante frontmatter
+      icon: "⚙️"
+
+faq:
+  title: Preguntas Frecuentes
+  description: Respuestas a preguntas comunes sobre el layout Landing
+  items:
+    - question: ¿Cómo configurar el bloque Hero?
+      answer: El bloque Hero admite dos modos - mostrar juego (configurar game) o imagen de fondo (configurar background), solo puedes elegir uno.
+    - question: ¿Admite estilos personalizados?
+      answer: El layout usa Tailwind CSS y admite personalización de estilos mediante configuración de tema y nombres de clase personalizados.
+    - question: ¿Son obligatorios los bloques de contenido?
+      answer: Todos los bloques son opcionales, puedes configurar los bloques que desees mostrar según tus necesidades.
+    - question: ¿Cómo agregar más funciones?
+      answer: Puedes agregar nuevos bloques de funciones extendiendo el componente de layout landing.tsx.
+
+bottomCta:
+  title: Comienza a usar el Layout Landing
+  description: Crea páginas de destino profesionales con configuración simple
+  text: Ver Documentación
+  link: /es/landing
+---
+
+## Guía de Configuración del Layout Landing
+
+El layout Landing es un diseño especialmente creado para páginas de destino, que proporciona múltiples bloques de contenido configurables.
+
+### Estructura del Layout
+
+1. **Bloque Hero**
+   - Admite mostrar juegos o imágenes de fondo
+   - Título grande y texto descriptivo
+   - Botones CTA principal y secundario
+
+2. **Bloque Features**
+   - Mostrar características en diseño de cuadrícula
+   - Admite iconos y descripciones
+   - Diseño responsivo automático
+
+3. **Bloque FAQ**
+   - Lista de preguntas frecuentes
+   - Admite formato de pregunta-respuesta
+   - Presentación limpia
+
+4. **Bloque Bottom CTA**
+   - Llamada a la acción inferior
+   - Guiar acciones del usuario
+   - Diseño de botón llamativo
+
+### Configuración Frontmatter
+
+Cada bloque se configura mediante frontmatter:
+
+```yaml
+hero:
+  game: URL          # Enlace del juego
+  background: URL    # Imagen de fondo
+
+features:
+  title: Título
+  description: Descripción
+  items:
+    - title: Título de característica
+      description: Descripción de característica
+      icon: emoji/URL
+
+faq:
+  title: Título de FAQ
+  description: Descripción de FAQ
+  items:
+    - question: Pregunta
+      answer: Respuesta
+
+bottomCta:
+  title: Título
+  description: Descripción
+  text: Texto del botón
+  link: Dirección del enlace
+```
+
+### Recomendaciones de Uso
+
+1. **Organización de Contenido**
+   - Organiza razonablemente el orden de cada bloque
+   - Mantén una jerarquía visual clara
+   - Destaca información importante
+
+2. **Efectos Visuales**
+   - Elige imágenes e iconos apropiados
+   - Presta atención a la combinación de colores
+   - Mantén un estilo uniforme
+
+3. **Consideraciones Responsivas**
+   - Prueba diferentes tamaños de pantalla
+   - Asegura la legibilidad del contenido
+   - Optimiza la experiencia móvil

@@ -1,6 +1,8 @@
 import type { Folder, MdxFile, PageMapItem } from 'nextra'
 import type { FrontMatter } from '../types'
 import themeConfig from '../../../theme.config'
+import { stripLocaleFromRoute } from './localeUtils'
+import { SUPPORTED_LOCALES } from '../../../config/site'
 
 function isMdxFile(item: PageMapItem): item is MdxFile {
     return 'frontMatter' in item && 'name' in item;
@@ -45,7 +47,7 @@ export function getCategories(pageMap: PageMapItem[], locale: string = 'en'): Ca
                         categories.push({
                             title: frontMatter.title || item.name,
                             icon: frontMatter.icon,
-                            slug: route,
+                            slug: stripLocaleFromRoute(route, Object.keys(SUPPORTED_LOCALES)),
                             description: frontMatter.description
                         });
                     }

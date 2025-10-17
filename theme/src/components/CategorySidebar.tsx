@@ -12,7 +12,15 @@ interface CategorySidebarProps {
 
 export function CategorySidebar({ categories, currentPath, onClose }: CategorySidebarProps) {
     const router = useRouter();
-    const { locale = 'en' } = router;
+    const { asPath } = router;
+
+    // 从 URL 路径中提取当前语言（因为静态导出模式下 router.locale 是 undefined）
+    const getLocaleFromPath = (path: string): string => {
+        const match = path.match(/^\/([a-z]{2})(\/|$)/);
+        return match ? match[1] : 'en';
+    };
+
+    const locale = router.locale || getLocaleFromPath(asPath);
 
     // 检查当前路径是否匹配某个分类
     const isActive = (slug: string) => {
@@ -57,11 +65,12 @@ export function CategorySidebar({ categories, currentPath, onClose }: CategorySi
                 {/* 分类列表 */}
                 {categories.map((category) => {
                     const active = isActive(category.slug);
+                    const categoryHref = `/${locale}${category.slug}`;
 
                     return (
                         <Link
                             key={category.slug}
-                            href={category.slug}
+                            href={categoryHref}
                             onClick={onClose}
                             className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                                 active

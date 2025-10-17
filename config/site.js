@@ -7,15 +7,15 @@ const SUPPORTED_LOCALES = {
     localeName: "English",
     ogLocale: "en_US",
     htmlLang: "en",
-    titleSuffix: "- Game Launch Boost",
+    titleSuffix: "- Brainrot Clicker",
     isDefault: true,
   },
-  zh: {
-    name: "简体中文",
-    localeName: "简体中文",
-    ogLocale: "zh_CN",
-    htmlLang: "zh",
-    titleSuffix: "- Game Launch Boost",
+  es: {
+    name: "Español",
+    localeName: "Español",
+    ogLocale: "es_ES",
+    htmlLang: "es",
+    titleSuffix: "- Brainrot Clicker",
     // isDefault: true,
   },
 };
@@ -42,13 +42,13 @@ const i18nConfig = {
 
 // 网站基础配置
 const SITE_CONFIG = {
-  url: "https://example.com",
-  title: "Game Launch Boost",
+  url: "https://brainrot-clicker.app",
+  title: "Brainrot Clicker",
   twitter: "@example",
-  siteName: "Game Launch Boost",
+  siteName: "Brainrot Clicker",
   // Logo 配置
   logo: {
-    text: "Game Launch Boost",
+    text: "Brainrot Clicker",
     image: "/logo.svg",
     height: 32,
   },

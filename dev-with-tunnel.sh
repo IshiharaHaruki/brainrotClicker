@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# 🎮 Game Launch Boost - 开发服务器 + Cloudflare Tunnel
+# 🎮 Brainrot Clicker - 开发服务器 + Cloudflare Tunnel
 # 此脚本会同时启动开发服务器和 Cloudflare Tunnel，解决 CSP 问题
 
-echo "🚀 启动 Game Launch Boost 开发环境..."
+echo "🚀 启动 Brainrot Clicker 开发环境..."
 echo ""
 
 # 检查是否安装了 cloudflared

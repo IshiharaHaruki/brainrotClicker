@@ -85,6 +85,7 @@ export function GameCarousel({ title, games }: GameCarouselProps) {
                                     title={game.title || ''}
                                     description={game.description}
                                     cover={game.cover}
+                                    thumbnail={game.thumbnail}
                                     category={game.category}
                                     date={game.date}
                                 />

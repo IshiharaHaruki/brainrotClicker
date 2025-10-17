@@ -1,11 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { Icon } from '@iconify/react';
+import { useRouter } from 'nextra/hooks';
 
 interface GameCardProps {
     title: string;
     description?: string;
     cover?: string;
+    thumbnail?: string;
     href: string;
     category?: string;
     date?: string;
@@ -13,24 +15,41 @@ interface GameCardProps {
     author?: string;
 }
 
-export function GameCard({ 
-    title, 
-    description, 
+export function GameCard({
+    title,
+    description,
     cover = '/default-cover.jpg',
+    thumbnail,
     href,
     category,
     date,
     tags,
     author
 }: GameCardProps) {
+    // 优先使用 thumbnail，如果没有则使用 cover
+    const displayImage = thumbnail || cover;
+
+    // 获取当前 locale 并构建完整路径
+    const router = useRouter();
+    const { asPath } = router;
+
+    // 从 URL 路径中提取当前语言（因为静态导出模式下 router.locale 是 undefined）
+    const getLocaleFromPath = (path: string): string => {
+        const match = path.match(/^\/([a-z]{2})(\/|$)/);
+        return match ? match[1] : 'en';
+    };
+
+    const locale = router.locale || getLocaleFromPath(asPath);
+    const fullHref = `/${locale}${href}`;
+
     return (
         <div className="group bg-white dark:bg-[#242424] rounded-xl shadow-sm overflow-hidden transition-all hover:shadow-md">
-            <Link href={href} className="block">
+            <Link href={fullHref} className="block">
                 {/* 封面图区域 */}
                 <div className="relative aspect-[16/9] overflow-hidden">
                     {/* 游戏封面 */}
-                    <img 
-                        src={cover} 
+                    <img
+                        src={displayImage}
                         alt={title}
                         className="w-full h-full object-cover transition-transform group-hover:scale-105"
                     />

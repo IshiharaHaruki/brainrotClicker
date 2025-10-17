@@ -1,8 +1,8 @@
 @echo off
-REM 🎮 Game Launch Boost - 开发服务器 + Cloudflare Tunnel (Windows)
+REM 🎮 Brainrot Clicker - 开发服务器 + Cloudflare Tunnel (Windows)
 REM 此脚本会同时启动开发服务器和 Cloudflare Tunnel，解决 CSP 问题
 
-echo 🚀 启动 Game Launch Boost 开发环境...
+echo 🚀 启动 Brainrot Clicker 开发环境...
 echo.
 
 REM 检查是否安装了 cloudflared

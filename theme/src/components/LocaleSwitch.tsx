@@ -6,14 +6,24 @@ import { useThemeConfig } from '../contexts'
 export function LocaleSwitch() {
     const router = useRouter()
     const { asPath } = router
-    const [currentLocale, setCurrentLocale] = useState(router.locale)
     const [isOpen, setIsOpen] = useState(false)
     const themeConfig = useThemeConfig()
 
+    // 从 URL 路径中提取当前语言
+    const getLocaleFromPath = useCallback((path: string): string => {
+        const match = path.match(/^\/([a-z]{2})(\/|$)/)
+        return match ? match[1] : themeConfig?.i18n?.defaultLocale || 'en'
+    }, [themeConfig])
+
+    const [currentLocale, setCurrentLocale] = useState(
+        router.locale || getLocaleFromPath(asPath)
+    )
+
     // 当路由变化时更新当前语言
     useEffect(() => {
-        setCurrentLocale(router.locale)
-    }, [router.locale])
+        const locale = router.locale || getLocaleFromPath(asPath)
+        setCurrentLocale(locale)
+    }, [router.locale, asPath, getLocaleFromPath])
 
     const handleLocaleChange = useCallback((newLocale: string) => {
         // 设置 cookie

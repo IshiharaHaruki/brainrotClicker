@@ -55,9 +55,11 @@ export function LandingLayout({ children, frontMatter }: LayoutProps) {
                         )}
                         {frontMatter.hero?.game ? (
                             <div className="max-w-5xl mx-auto mb-12 bg-theme-bg-primary dark:bg-dark rounded-lg shadow-xl overflow-hidden">
-                                <GameFrame 
+                                <GameFrame
                                     src={frontMatter.hero.game || ''}
                                     title={frontMatter.title || ''}
+                                    cover={frontMatter.cover}
+                                    thumbnail={frontMatter.thumbnail}
                                 />
                             </div>
                         ) : (

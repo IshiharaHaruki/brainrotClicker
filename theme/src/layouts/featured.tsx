@@ -103,6 +103,7 @@ export function FeaturedLayout({ children, frontMatter, pageMap }: FeaturedLayou
                             src={frontMatter.game}
                             title={frontMatter.title || 'Game'}
                             cover={frontMatter.cover}
+                            thumbnail={frontMatter.thumbnail}
                         />
                     </div>
                 )}
@@ -147,7 +148,7 @@ export function FeaturedLayout({ children, frontMatter, pageMap }: FeaturedLayou
                             {frontMatter.cover && (
                                 <div className="flex-shrink-0">
                                     <img
-                                        src={frontMatter.cover}
+                                        src={frontMatter.thumbnail}
                                         alt={frontMatter.title}
                                         className="w-32 h-32 rounded-xl object-cover"
                                     />

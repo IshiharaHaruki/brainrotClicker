@@ -48,6 +48,7 @@ export interface FrontMatter {
   description?: string;
   game?: string;
   cover?: string;
+  thumbnail?: string;
   date?: string;
   category?: string;
   tags?: string[];

@@ -27,6 +27,7 @@ export function DefaultLayout({ children, frontMatter }: DefaultLayoutProps) {
                             src={gameUrl}
                             title={frontMatter.title || 'Game'}
                             cover={frontMatter.cover}
+                            thumbnail={frontMatter.thumbnail}
                         />
                     </div>
                 )}

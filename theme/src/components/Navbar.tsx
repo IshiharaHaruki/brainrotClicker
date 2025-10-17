@@ -47,12 +47,31 @@ interface ThemeConfig {
 
 export function Navbar({ meta }: NavbarProps) {
     const router = useRouter()
-    const { asPath, locale = 'en' } = router
+    const { asPath } = router
     const themeConfig = useThemeConfig() as ThemeConfig
     const siteName = themeConfig?.siteName
     const primaryColor = themeConfig?.primaryColor || '#81c869'
     const fsRoute = useFSRoute()
     const [isMenuOpen, setIsMenuOpen] = React.useState(false)
+
+    // 从 URL 路径中提取当前语言（因为静态导出模式下 router.locale 是 undefined）
+    const getLocaleFromPath = React.useCallback((path: string): string => {
+        const match = path.match(/^\/([a-z]{2})(\/|$)/);
+        return match ? match[1] : themeConfig?.i18n?.defaultLocale || 'en';
+    }, [themeConfig]);
+
+    // 使用 state 跟踪当前 locale，确保路由变化时能正确更新
+    const [currentLocale, setCurrentLocale] = React.useState(
+        router.locale || getLocaleFromPath(asPath)
+    );
+
+    // 当路由变化时更新 locale
+    React.useEffect(() => {
+        const newLocale = router.locale || getLocaleFromPath(asPath);
+        setCurrentLocale(newLocale);
+    }, [router.locale, asPath, getLocaleFromPath]);
+
+    const locale = currentLocale;
 
     // 检查主题切换功能是否启用
     const themeEnabled = themeConfig?.features?.themeSwitch ?? false
@@ -61,6 +80,7 @@ export function Navbar({ meta }: NavbarProps) {
     console.log('themeConfig:', themeConfig)
     console.log('i18nEnabled:', i18nEnabled)
     console.log('features:', themeConfig?.features)
+    console.log('currentLocale:', currentLocale)
 
     // 处理菜单配置
     const menuConfig = React.useMemo(() => {

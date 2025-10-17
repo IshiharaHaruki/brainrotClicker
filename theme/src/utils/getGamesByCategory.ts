@@ -1,6 +1,8 @@
 import type { Folder, MdxFile, PageMapItem } from 'nextra'
 import type { FrontMatter } from '../types'
 import themeConfig from '../../../theme.config'
+import { stripLocaleFromRoute } from './localeUtils'
+import { SUPPORTED_LOCALES } from '../../../config/site'
 
 function isMdxFile(item: PageMapItem): item is MdxFile {
     return 'frontMatter' in item && 'name' in item;
@@ -31,7 +33,7 @@ export function getGamesByCategory(pageMap: PageMapItem[], category: string, loc
                     const { frontMatter = {} } = item;
                     games.push({
                         ...frontMatter,
-                        slug: route
+                        slug: stripLocaleFromRoute(route, Object.keys(SUPPORTED_LOCALES))
                     });
                 }
             }
@@ -83,13 +85,14 @@ export function getGamesInCurrentDirectory(pageMap: PageMapItem[], currentPath: 
                     item.children.forEach(child => {
                         if (isMdxFile(child) && child.name !== 'index') {
                             const { frontMatter = {} } = child;
+                            const cleanSlug = stripLocaleFromRoute(child.route || '', Object.keys(SUPPORTED_LOCALES));
                             console.log('Adding game:', {
                                 title: frontMatter.title,
-                                slug: child.route
+                                slug: cleanSlug
                             });
                             games.push({
                                 ...frontMatter,
-                                slug: child.route
+                                slug: cleanSlug
                             });
                         }
                     });
@@ -133,7 +136,7 @@ export function getAllGames(pageMap: PageMapItem[], locale: string = 'en'): Fron
                     const { frontMatter = {} } = item;
                     games.push({
                         ...frontMatter,
-                        slug: route
+                        slug: stripLocaleFromRoute(route, Object.keys(SUPPORTED_LOCALES))
                     });
                 }
             }

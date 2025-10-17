@@ -5,14 +5,18 @@ interface GameFrameProps {
     src: string;
     title: string;
     cover?: string;
+    thumbnail?: string;
 }
 
-export function GameFrame({ src, title, cover }: GameFrameProps) {
+export function GameFrame({ src, title, cover, thumbnail }: GameFrameProps) {
     const [key, setKey] = React.useState(0);
     const [isFullscreen, setIsFullscreen] = React.useState(false);
     const [showTip, setShowTip] = React.useState(false);
     const [isLoaded, setIsLoaded] = React.useState(false);
     const iframeRef = React.useRef<HTMLIFrameElement>(null);
+
+    // 优先使用 thumbnail，如果没有则使用 cover
+    const displayImage = thumbnail || cover || '/default-cover.jpg';
 
     const handleReload = () => {
         setKey(prev => prev + 1);
@@ -101,8 +105,8 @@ export function GameFrame({ src, title, cover }: GameFrameProps) {
             </div>
             <div className="flex items-center justify-between px-4 py-3 border-t border-theme-border">
                 <div className="flex items-center gap-2">
-                    {cover && (
-                        <img src={cover} alt={`${title} cover`} className="w-8 h-8 rounded-lg object-cover" />
+                    {displayImage && (
+                        <img src={displayImage} alt={`${title} cover`} className="w-8 h-8 rounded-lg object-cover" />
                     )}
                     <h2 className="text-base font-medium text-theme-text-primary">{title}</h2>
                 </div>
