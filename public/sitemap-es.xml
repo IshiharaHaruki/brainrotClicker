@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://brainrot-clicker.app/es/games/clicker/steal-a-brainrot</loc>
+    <lastmod>2025-10-17T18:51:17.237Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/clicker/steal-a-brainrot"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/clicker/steal-a-brainrot"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/clicker/steal-a-brainrot"/>
+  </url>
+  <url>
+    <loc>https://brainrot-clicker.app/es/games/clicker</loc>
+    <lastmod>2025-10-17T18:51:17.237Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/clicker"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/clicker"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/clicker"/>
+  </url>
+  <url>
+    <loc>https://brainrot-clicker.app/es/games</loc>
+    <lastmod>2025-10-17T18:51:17.237Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games"/>
+  </url>
+  <url>
+    <loc>https://brainrot-clicker.app/es/landing</loc>
+    <lastmod>2025-10-17T18:51:17.237Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/landing"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/landing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/landing"/>
+  </url>
+  <url>
+    <loc>https://brainrot-clicker.app/es</loc>
+    <lastmod>2025-10-17T18:51:17.237Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en"/>
+  </url>
+</urlset>
