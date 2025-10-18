@@ -74,8 +74,17 @@ export function FeaturedLayout({ children, frontMatter, pageMap }: FeaturedLayou
                 </div>
             )}
 
+            {/* 顶部广告区 */}
+            <div
+                className="w-full h-32 md:h-36 bg-theme-bg-primary dark:bg-[#1a1a1a]"
+                id="top-ad-zone"
+                aria-label="Top advertisement space"
+            >
+                {/* AdSense 广告位 */}
+            </div>
+
             {/* 三区布局容器 */}
-            <div className="flex w-full pt-32 md:pt-36">
+            <div className="flex w-full">
                 {/* 左侧广告空白区 - 仅大屏显示 */}
                 <div
                     className="hidden xl:block w-[160px] 2xl:w-[200px] flex-shrink-0"
@@ -98,14 +107,24 @@ export function FeaturedLayout({ children, frontMatter, pageMap }: FeaturedLayou
                     {/* Main Content */}
                     <div className="flex-1 min-w-0 px-4 lg:px-6">
                 {frontMatter.game && (
-                    <div className="mb-32">
-                        <GameFrame
-                            src={frontMatter.game}
-                            title={frontMatter.title || 'Game'}
-                            cover={frontMatter.cover}
-                            thumbnail={frontMatter.thumbnail}
-                        />
-                    </div>
+                    <>
+                        <div>
+                            <GameFrame
+                                src={frontMatter.game}
+                                title={frontMatter.title || 'Game'}
+                                cover={frontMatter.cover}
+                                thumbnail={frontMatter.thumbnail}
+                            />
+                        </div>
+                        {/* 游戏下方广告区 */}
+                        <div
+                            className="w-full h-32 bg-theme-bg-primary dark:bg-[#1a1a1a] my-8"
+                            id="game-bottom-ad-zone"
+                            aria-label="Advertisement space below game"
+                        >
+                            {/* AdSense 广告位 */}
+                        </div>
+                    </>
                 )}
 
                 {/* 分类游戏列表 */}

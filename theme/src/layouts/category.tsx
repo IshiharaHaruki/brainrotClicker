@@ -100,8 +100,17 @@ export function CategoryLayout({ children, pageMap }: CategoryLayoutProps) {
                 </div>
             )}
 
+            {/* 顶部广告区 */}
+            <div
+                className="w-full h-32 md:h-36 bg-theme-bg-primary dark:bg-[#1a1a1a]"
+                id="top-ad-zone"
+                aria-label="Top advertisement space"
+            >
+                {/* AdSense 广告位 */}
+            </div>
+
             {/* 三区布局容器 */}
-            <div className="flex w-full pt-32 md:pt-36">
+            <div className="flex w-full">
                 {/* 左侧广告空白区 - 仅大屏显示 */}
                 <div
                     className="hidden xl:block w-[160px] 2xl:w-[200px] flex-shrink-0"

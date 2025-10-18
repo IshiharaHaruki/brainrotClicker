@@ -18,14 +18,24 @@ export function DefaultLayout({ children, frontMatter }: DefaultLayoutProps) {
             <div className="max-w-5xl mx-auto px-4 pt-32 md:pt-36 pb-6">
                 {/* 游戏播放器 */}
                 {gameUrl && (
-                    <div className="mb-32">
-                        <GameFrame
-                            src={gameUrl}
-                            title={frontMatter.title || 'Game'}
-                            cover={frontMatter.cover}
-                            thumbnail={frontMatter.thumbnail}
-                        />
-                    </div>
+                    <>
+                        <div>
+                            <GameFrame
+                                src={gameUrl}
+                                title={frontMatter.title || 'Game'}
+                                cover={frontMatter.cover}
+                                thumbnail={frontMatter.thumbnail}
+                            />
+                        </div>
+                        {/* 游戏下方广告区 */}
+                        <div
+                            className="w-full h-32 bg-theme-bg-primary dark:bg-[#1a1a1a] my-8"
+                            id="game-bottom-ad-zone"
+                            aria-label="Advertisement space below game"
+                        >
+                            {/* AdSense 广告位 */}
+                        </div>
+                    </>
                 )}
 
                 
