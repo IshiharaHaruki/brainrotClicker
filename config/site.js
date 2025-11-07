@@ -18,6 +18,14 @@ const SUPPORTED_LOCALES = {
     titleSuffix: "- Brainrot Clicker",
     // isDefault: true,
   },
+  cn: {
+    name: "中文",
+    localeName: "中文",
+    ogLocale: "zh_CN",
+    htmlLang: "zh",
+    titleSuffix: "- Brainrot Clicker",
+    // isDefault: true,
+  },
 };
 
 // 获取默认语言配置
