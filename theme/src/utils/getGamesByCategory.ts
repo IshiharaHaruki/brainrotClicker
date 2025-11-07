@@ -162,3 +162,61 @@ export function getAllGames(pageMap: PageMapItem[], locale: string = 'en'): Fron
         return titleA.localeCompare(titleB);
     });
 }
+
+/**
+ * 筛选类型
+ */
+export type FilterType = 'all' | 'new' | 'hot';
+
+/**
+ * 根据筛选条件获取游戏列表
+ * @param pageMap - 页面映射
+ * @param locale - 语言
+ * @param filter - 筛选类型: 'all' | 'new' | 'hot'
+ */
+export function getFilteredGames(
+    pageMap: PageMapItem[],
+    locale: string = 'en',
+    filter: FilterType = 'all'
+): FrontMatter[] {
+    // 获取所有游戏
+    let games = getAllGames(pageMap, locale);
+
+    // 根据筛选类型应用不同逻辑
+    switch (filter) {
+        case 'new': {
+            // NEW: 显示最近 10 天的游戏 OR frontmatter 中标记 filter: new 的游戏
+            const tenDaysAgo = new Date();
+            tenDaysAgo.setDate(tenDaysAgo.getDate() - 10);
+
+            const newGames = games.filter(game => {
+                // 手动标记为 new 的游戏
+                if (game.filter === 'new') {
+                    return true;
+                }
+
+                // 最近 10 天内发布的游戏（且未标记为 hot）
+                if (game.date && game.filter !== 'hot') {
+                    const gameDate = new Date(game.date);
+                    return gameDate >= tenDaysAgo;
+                }
+
+                return false;
+            });
+
+            return newGames;
+        }
+
+        case 'hot': {
+            // HOT: 只显示 frontmatter 中标记 filter: hot 的游戏
+            const hotGames = games.filter(game => game.filter === 'hot');
+            return hotGames;
+        }
+
+        case 'all':
+        default: {
+            // ALL: 返回所有游戏（已按日期降序排序）
+            return games;
+        }
+    }
+}

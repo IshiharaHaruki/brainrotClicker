@@ -3,7 +3,7 @@ import type { PageMapItem } from 'nextra';
 import { GameCard } from '../components/GameCard';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { CategorySidebar } from '../components/CategorySidebar';
-import { getAllGames } from '../utils/getGamesByCategory';
+import { getFilteredGames, type FilterType } from '../utils/getGamesByCategory';
 import { getCategories } from '../utils/getCategories';
 import { Icon } from '@iconify/react';
 import Link from 'next/link';
@@ -25,12 +25,15 @@ export function AllGamesLayout({ children, frontMatter, pageMap }: AllGamesLayou
     const currentPage = Number(query.page) || 1;
     const pageSize = 12;
 
+    // 从 URL 参数中获取筛选类型
+    const filter = (query.filter as FilterType) || 'all';
+
     useEffect(() => {
         setIsClient(true);
     }, []);
 
-    // 获取所有游戏
-    const allGames = getAllGames(pageMap, locale);
+    // 根据筛选类型获取游戏
+    const allGames = getFilteredGames(pageMap, locale, filter);
 
     // 获取所有分类（用于 Sidebar）
     const categories = getCategories(pageMap, locale);
@@ -44,7 +47,7 @@ export function AllGamesLayout({ children, frontMatter, pageMap }: AllGamesLayou
     const hasNextPage = currentPage < totalPages;
     const hasPrevPage = currentPage > 1;
 
-    // 构建分页链接
+    // 构建分页链接（保留 filter 参数）
     const buildPageUrl = (page: number) => {
         const { pathname, query } = router;
         return {
@@ -52,6 +55,33 @@ export function AllGamesLayout({ children, frontMatter, pageMap }: AllGamesLayou
             query: { ...query, page }
         };
     };
+
+    // 根据筛选类型生成动态标题和描述
+    const getPageInfo = () => {
+        switch (filter) {
+            case 'new':
+                return {
+                    title: 'New Games - Latest Releases',
+                    description: 'Discover the newest games added in the last 10 days. Fresh content, latest releases, and exciting new gameplay experiences.',
+                    badge: { text: 'NEW', icon: '⭐', color: 'bg-green-500' }
+                };
+            case 'hot':
+                return {
+                    title: 'Hot Games - Most Popular',
+                    description: 'Play the hottest trending games with the most clicks and player engagement. Top-rated and most popular titles.',
+                    badge: { text: 'HOT', icon: '🔥', color: 'bg-red-500' }
+                };
+            case 'all':
+            default:
+                return {
+                    title: frontMatter.title || 'All Games',
+                    description: frontMatter.description || 'Browse our complete collection of games',
+                    badge: null
+                };
+        }
+    };
+
+    const pageInfo = getPageInfo();
 
     return (
         <main className="min-h-screen bg-theme-bg-primary dark:bg-[#1a1a1a]">
@@ -119,14 +149,20 @@ export function AllGamesLayout({ children, frontMatter, pageMap }: AllGamesLayou
 
                         {/* 页面标题和统计 */}
                         <div className="mb-6">
-                            <h1 className="text-3xl font-bold text-theme-text-primary mb-2">
-                                {frontMatter.title || 'All Games'}
-                            </h1>
-                            {frontMatter.description && (
-                                <p className="text-theme-text-secondary">
-                                    {frontMatter.description}
-                                </p>
-                            )}
+                            <div className="flex items-center gap-3 mb-2">
+                                <h1 className="text-3xl font-bold text-theme-text-primary">
+                                    {pageInfo.title}
+                                </h1>
+                                {pageInfo.badge && (
+                                    <span className={`${pageInfo.badge.color} text-white text-sm font-bold px-3 py-1 rounded-full inline-flex items-center gap-1`}>
+                                        <span>{pageInfo.badge.icon}</span>
+                                        <span>{pageInfo.badge.text}</span>
+                                    </span>
+                                )}
+                            </div>
+                            <p className="text-theme-text-secondary">
+                                {pageInfo.description}
+                            </p>
                             <div className="flex items-center gap-2 mt-3 text-sm text-theme-text-secondary">
                                 <Icon icon="material-symbols:apps" className="w-4 h-4" />
                                 <span>{totalGames} games available</span>

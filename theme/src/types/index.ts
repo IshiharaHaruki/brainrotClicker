@@ -60,6 +60,7 @@ export interface FrontMatter {
   locale?: string;
   breadcrumb?: boolean;
   icon?: string;
+  filter?: 'new' | 'hot';  // 游戏筛选标记：new（新游戏）或 hot（热门游戏）
 }
 
 export interface PageData {

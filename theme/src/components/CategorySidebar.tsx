@@ -12,7 +12,7 @@ interface CategorySidebarProps {
 
 export function CategorySidebar({ categories, currentPath, onClose }: CategorySidebarProps) {
     const router = useRouter();
-    const { asPath } = router;
+    const { asPath, query } = router;
 
     // 从 URL 路径中提取当前语言（因为静态导出模式下 router.locale 是 undefined）
     const getLocaleFromPath = (path: string): string => {
@@ -22,9 +22,17 @@ export function CategorySidebar({ categories, currentPath, onClose }: CategorySi
 
     const locale = router.locale || getLocaleFromPath(asPath);
 
+    // 获取当前筛选器
+    const currentFilter = (query.filter as string) || 'all';
+
     // 检查当前路径是否匹配某个分类
     const isActive = (slug: string) => {
         return currentPath.startsWith(slug);
+    };
+
+    // 检查筛选器是否激活
+    const isFilterActive = (filter: string) => {
+        return currentFilter === filter && currentPath.includes('/games');
     };
 
     return (
@@ -43,20 +51,40 @@ export function CategorySidebar({ categories, currentPath, onClose }: CategorySi
                     </div>
                 )}
 
+                {/* 特殊分类：ALL GAMES */}
+                <Link
+                    href={`/${locale}/games?filter=all`}
+                    className={`block px-4 py-3 rounded-lg transition-colors ${
+                        isFilterActive('all')
+                            ? 'bg-yellow-700 dark:bg-yellow-800 text-white shadow-md'
+                            : 'bg-[#FFD700] hover:bg-[#FFC700] dark:bg-[#FFB700] dark:hover:bg-[#FFA700] text-gray-800 dark:text-gray-900'
+                    }`}
+                >
+                    <span className="font-semibold">ALL GAMES</span>
+                </Link>
+
                 {/* 特殊分类：NEW GAMES */}
                 <Link
                     href={`/${locale}/games?filter=new`}
-                    className="block px-4 py-3 bg-[#FFD700] hover:bg-[#FFC700] dark:bg-[#FFB700] dark:hover:bg-[#FFA700] rounded-lg transition-colors"
+                    className={`block px-4 py-3 rounded-lg transition-colors ${
+                        isFilterActive('new')
+                            ? 'bg-yellow-700 dark:bg-yellow-800 text-white shadow-md'
+                            : 'bg-[#FFD700] hover:bg-[#FFC700] dark:bg-[#FFB700] dark:hover:bg-[#FFA700] text-gray-800 dark:text-gray-900'
+                    }`}
                 >
-                    <span className="font-semibold text-gray-800 dark:text-gray-900">NEW GAMES</span>
+                    <span className="font-semibold">NEW GAMES</span>
                 </Link>
 
                 {/* 特殊分类：HOT GAMES */}
                 <Link
                     href={`/${locale}/games?filter=hot`}
-                    className="block px-4 py-3 bg-[#FFD700] hover:bg-[#FFC700] dark:bg-[#FFB700] dark:hover:bg-[#FFA700] rounded-lg transition-colors"
+                    className={`block px-4 py-3 rounded-lg transition-colors ${
+                        isFilterActive('hot')
+                            ? 'bg-yellow-700 dark:bg-yellow-800 text-white shadow-md'
+                            : 'bg-[#FFD700] hover:bg-[#FFC700] dark:bg-[#FFB700] dark:hover:bg-[#FFA700] text-gray-800 dark:text-gray-900'
+                    }`}
                 >
-                    <span className="font-semibold text-gray-800 dark:text-gray-900">HOT GAMES</span>
+                    <span className="font-semibold">HOT GAMES</span>
                 </Link>
 
                 {/* 分隔线 */}
