@@ -13,3 +13,4 @@ Host: https://brainrot-clicker.app
 Sitemap: https://brainrot-clicker.app/sitemap.xml
 Sitemap: https://brainrot-clicker.app/sitemap-en.xml
 Sitemap: https://brainrot-clicker.app/sitemap-es.xml
+Sitemap: https://brainrot-clicker.app/sitemap-cn.xml

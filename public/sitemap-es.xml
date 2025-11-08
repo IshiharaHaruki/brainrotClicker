@@ -1,48 +1,183 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://brainrot-clicker.app/es/games/clicker/steal-a-brainrot</loc>
-    <lastmod>2025-10-17T18:51:17.237Z</lastmod>
+    <loc>https://brainrot-clicker.app/es/games/brainrot/2048-italian-brainrot</loc>
+    <lastmod>2025-11-08T07:11:18.283Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/clicker/steal-a-brainrot"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/clicker/steal-a-brainrot"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/clicker/steal-a-brainrot"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/brainrot/2048-italian-brainrot"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/brainrot/2048-italian-brainrot"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn/games/brainrot/2048-italian-brainrot"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/brainrot/2048-italian-brainrot"/>
+  </url>
+  <url>
+    <loc>https://brainrot-clicker.app/es/games/brainrot/merge-brainrot</loc>
+    <lastmod>2025-11-08T07:11:18.284Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/brainrot/merge-brainrot"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/brainrot/merge-brainrot"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn/games/brainrot/merge-brainrot"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/brainrot/merge-brainrot"/>
+  </url>
+  <url>
+    <loc>https://brainrot-clicker.app/es/games/brainrot/steal-a-brainrot</loc>
+    <lastmod>2025-11-08T07:11:18.284Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/brainrot/steal-a-brainrot"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/brainrot/steal-a-brainrot"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn/games/brainrot/steal-a-brainrot"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/brainrot/steal-a-brainrot"/>
+  </url>
+  <url>
+    <loc>https://brainrot-clicker.app/es/games/brainrot</loc>
+    <lastmod>2025-11-08T07:11:18.284Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/brainrot"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/brainrot"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn/games/brainrot"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/brainrot"/>
+  </url>
+  <url>
+    <loc>https://brainrot-clicker.app/es/games/clicker/brainrot-clicker</loc>
+    <lastmod>2025-11-08T07:11:18.284Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/clicker/brainrot-clicker"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/clicker/brainrot-clicker"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn/games/clicker/brainrot-clicker"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/clicker/brainrot-clicker"/>
+  </url>
+  <url>
+    <loc>https://brainrot-clicker.app/es/games/clicker/chill-clicker</loc>
+    <lastmod>2025-11-08T07:11:18.284Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/clicker/chill-clicker"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/clicker/chill-clicker"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn/games/clicker/chill-clicker"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/clicker/chill-clicker"/>
+  </url>
+  <url>
+    <loc>https://brainrot-clicker.app/es/games/clicker/chill-girl-clicker</loc>
+    <lastmod>2025-11-08T07:11:18.284Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/clicker/chill-girl-clicker"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/clicker/chill-girl-clicker"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn/games/clicker/chill-girl-clicker"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/clicker/chill-girl-clicker"/>
+  </url>
+  <url>
+    <loc>https://brainrot-clicker.app/es/games/clicker/chill-guy-clicker</loc>
+    <lastmod>2025-11-08T07:11:18.284Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/clicker/chill-guy-clicker"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/clicker/chill-guy-clicker"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn/games/clicker/chill-guy-clicker"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/clicker/chill-guy-clicker"/>
+  </url>
+  <url>
+    <loc>https://brainrot-clicker.app/es/games/clicker/cookie-clicker</loc>
+    <lastmod>2025-11-08T07:11:18.284Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/clicker/cookie-clicker"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/clicker/cookie-clicker"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn/games/clicker/cookie-clicker"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/clicker/cookie-clicker"/>
+  </url>
+  <url>
+    <loc>https://brainrot-clicker.app/es/games/clicker/planet-clicker</loc>
+    <lastmod>2025-11-08T07:11:18.284Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/clicker/planet-clicker"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/clicker/planet-clicker"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn/games/clicker/planet-clicker"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/clicker/planet-clicker"/>
+  </url>
+  <url>
+    <loc>https://brainrot-clicker.app/es/games/clicker/spacebar-clicker-2</loc>
+    <lastmod>2025-11-08T07:11:18.284Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/clicker/spacebar-clicker-2"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/clicker/spacebar-clicker-2"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn/games/clicker/spacebar-clicker-2"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/clicker/spacebar-clicker-2"/>
+  </url>
+  <url>
+    <loc>https://brainrot-clicker.app/es/games/clicker/spacebar-clicker-3</loc>
+    <lastmod>2025-11-08T07:11:18.284Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/clicker/spacebar-clicker-3"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/clicker/spacebar-clicker-3"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn/games/clicker/spacebar-clicker-3"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/clicker/spacebar-clicker-3"/>
+  </url>
+  <url>
+    <loc>https://brainrot-clicker.app/es/games/clicker/sprunki-clicker</loc>
+    <lastmod>2025-11-08T07:11:18.284Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/clicker/sprunki-clicker"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/clicker/sprunki-clicker"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn/games/clicker/sprunki-clicker"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/clicker/sprunki-clicker"/>
+  </url>
+  <url>
+    <loc>https://brainrot-clicker.app/es/games/clicker/unchill-guy-clicker</loc>
+    <lastmod>2025-11-08T07:11:18.284Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/clicker/unchill-guy-clicker"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/clicker/unchill-guy-clicker"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn/games/clicker/unchill-guy-clicker"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/clicker/unchill-guy-clicker"/>
   </url>
   <url>
     <loc>https://brainrot-clicker.app/es/games/clicker</loc>
-    <lastmod>2025-10-17T18:51:17.237Z</lastmod>
+    <lastmod>2025-11-08T07:11:18.284Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games/clicker"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games/clicker"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn/games/clicker"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games/clicker"/>
   </url>
   <url>
     <loc>https://brainrot-clicker.app/es/games</loc>
-    <lastmod>2025-10-17T18:51:17.237Z</lastmod>
+    <lastmod>2025-11-08T07:11:18.284Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/games"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/games"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn/games"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/games"/>
   </url>
   <url>
     <loc>https://brainrot-clicker.app/es/landing</loc>
-    <lastmod>2025-10-17T18:51:17.237Z</lastmod>
+    <lastmod>2025-11-08T07:11:18.284Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en/landing"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es/landing"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn/landing"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en/landing"/>
   </url>
   <url>
     <loc>https://brainrot-clicker.app/es</loc>
-    <lastmod>2025-10-17T18:51:17.237Z</lastmod>
+    <lastmod>2025-11-08T07:11:18.284Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://brainrot-clicker.app/en"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://brainrot-clicker.app/es"/>
+    <xhtml:link rel="alternate" hreflang="cn" href="https://brainrot-clicker.app/cn"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://brainrot-clicker.app/en"/>
   </url>
 </urlset>
