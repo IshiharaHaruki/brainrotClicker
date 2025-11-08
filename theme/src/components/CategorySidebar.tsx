@@ -22,8 +22,24 @@ export function CategorySidebar({ categories, currentPath, onClose }: CategorySi
 
     const locale = router.locale || getLocaleFromPath(asPath);
 
-    // 获取当前筛选器
-    const currentFilter = (query.filter as string) || 'all';
+    // 从 URL 中提取筛选器（支持查询参数和 hash）
+    const getCurrentFilter = (): string => {
+        // 优先从查询参数中获取（保持向后兼容）
+        if (query.filter) {
+            return query.filter as string;
+        }
+        // 从 hash 中获取
+        if (typeof window !== 'undefined') {
+            const hash = window.location.hash;
+            const match = hash.match(/#filter-(\w+)/);
+            if (match) {
+                return match[1];
+            }
+        }
+        return 'all';
+    };
+
+    const currentFilter = getCurrentFilter();
 
     // 检查当前路径是否匹配某个分类
     const isActive = (slug: string) => {
@@ -53,7 +69,7 @@ export function CategorySidebar({ categories, currentPath, onClose }: CategorySi
 
                 {/* 特殊分类：ALL GAMES */}
                 <Link
-                    href={`/${locale}/games?filter=all`}
+                    href={`/${locale}/games#filter-all`}
                     className={`block px-4 py-3 rounded-lg transition-colors ${
                         isFilterActive('all')
                             ? 'bg-yellow-700 dark:bg-yellow-800 text-white shadow-md'
@@ -65,7 +81,7 @@ export function CategorySidebar({ categories, currentPath, onClose }: CategorySi
 
                 {/* 特殊分类：NEW GAMES */}
                 <Link
-                    href={`/${locale}/games?filter=new`}
+                    href={`/${locale}/games#filter-new`}
                     className={`block px-4 py-3 rounded-lg transition-colors ${
                         isFilterActive('new')
                             ? 'bg-yellow-700 dark:bg-yellow-800 text-white shadow-md'
@@ -77,7 +93,7 @@ export function CategorySidebar({ categories, currentPath, onClose }: CategorySi
 
                 {/* 特殊分类：HOT GAMES */}
                 <Link
-                    href={`/${locale}/games?filter=hot`}
+                    href={`/${locale}/games#filter-hot`}
                     className={`block px-4 py-3 rounded-lg transition-colors ${
                         isFilterActive('hot')
                             ? 'bg-yellow-700 dark:bg-yellow-800 text-white shadow-md'

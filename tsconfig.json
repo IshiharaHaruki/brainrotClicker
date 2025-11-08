@@ -35,6 +35,7 @@
     "workers",
     ".vercel",
     ".next",
-    ".wrangler"
+    ".wrangler",
+    "out"
   ]
 }
