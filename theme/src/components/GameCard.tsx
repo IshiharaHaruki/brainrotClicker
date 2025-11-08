@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Icon } from '@iconify/react';
 import { useRouter } from 'nextra/hooks';
 import { trackCardClick } from '../utils/analytics';
+import { extractGameSlug } from '../utils/slug';
 
 interface GameCardProps {
     title: string;
@@ -43,8 +44,8 @@ export function GameCard({
     const locale = router.locale || getLocaleFromPath(asPath);
     const fullHref = `/${locale}${href}`;
 
-    // 提取 gameSlug（例如：/games/cookie-clicker → cookie-clicker）
-    const gameSlug = href.replace('/games/', '');
+    // 提取 gameSlug 用于追踪（详见 utils/slug.ts）
+    const gameSlug = extractGameSlug(href) || '';
 
     // 追踪卡片点击
     const handleCardClick = () => {

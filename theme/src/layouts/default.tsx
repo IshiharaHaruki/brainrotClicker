@@ -4,6 +4,7 @@ import { GameFrame } from '../components/GameFrame';
 import { ShareButtons } from '../components/ShareButtons';
 import { Breadcrumb } from '../components/Breadcrumb';
 import { useGamePageTracking } from '../utils/analytics';
+import { extractGameSlug } from '../utils/slug';
 import type { FrontMatter } from '../types';
 
 interface DefaultLayoutProps {
@@ -19,12 +20,6 @@ export function DefaultLayout({ children, frontMatter }: DefaultLayoutProps) {
     const getLocaleFromPath = (path: string): string => {
         const match = path.match(/^\/([a-z]{2})(\/|$)/);
         return match ? match[1] : 'en';
-    };
-
-    // 从路径中提取 gameSlug（例如：/en/games/cookie-clicker → cookie-clicker）
-    const extractGameSlug = (path: string): string | null => {
-        const match = path.match(/\/games\/([^\/\?#]+)/);
-        return match ? match[1] : null;
     };
 
     const locale = router.locale || getLocaleFromPath(router.asPath);
