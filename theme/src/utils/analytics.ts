@@ -174,6 +174,9 @@ export function useGamePageTracking(gameSlug: string, locale?: string): void {
   const { useEffect } = React;
 
   useEffect(() => {
+    // 如果不是游戏页面（gameSlug 为空），则不追踪
+    if (!gameSlug || gameSlug.trim() === '') return;
+
     // 追踪 PV
     trackPageView(gameSlug, locale);
 

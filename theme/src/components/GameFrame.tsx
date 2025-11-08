@@ -1,28 +1,44 @@
 import React from 'react'
 import { Icon } from '@iconify/react'
+import { useRouter } from 'nextra/hooks';
+import { trackGameStart } from '../utils/analytics';
 
 interface GameFrameProps {
     src: string;
     title: string;
     cover?: string;
     thumbnail?: string;
+    gameSlug?: string;  // 游戏标识（例如：cookie-clicker）
 }
 
-export function GameFrame({ src, title, cover, thumbnail }: GameFrameProps) {
+export function GameFrame({ src, title, cover, thumbnail, gameSlug }: GameFrameProps) {
     const [key, setKey] = React.useState(0);
     const [isFullscreen, setIsFullscreen] = React.useState(false);
     const [showTip, setShowTip] = React.useState(false);
     const [isLoaded, setIsLoaded] = React.useState(false);
     const iframeRef = React.useRef<HTMLIFrameElement>(null);
+    const router = useRouter();
 
     // 优先使用 thumbnail，如果没有则使用 cover
     const displayImage = thumbnail || cover || '/default-cover.jpg';
+
+    // 从 URL 路径中提取当前语言
+    const getLocaleFromPath = (path: string): string => {
+        const match = path.match(/^\/([a-z]{2})(\/|$)/);
+        return match ? match[1] : 'en';
+    };
+
+    const locale = router.locale || getLocaleFromPath(router.asPath);
 
     const handleReload = () => {
         setKey(prev => prev + 1);
     };
 
     const handlePlay = () => {
+        // 追踪游戏启动
+        if (gameSlug) {
+            trackGameStart(gameSlug, locale);
+        }
         setIsLoaded(true);
     };
 

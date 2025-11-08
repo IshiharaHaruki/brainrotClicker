@@ -3,6 +3,7 @@ import { useRouter } from 'nextra/hooks';
 import { GameFrame } from '../components/GameFrame';
 import { ShareButtons } from '../components/ShareButtons';
 import { Breadcrumb } from '../components/Breadcrumb';
+import { useGamePageTracking } from '../utils/analytics';
 import type { FrontMatter } from '../types';
 
 interface DefaultLayoutProps {
@@ -11,7 +12,26 @@ interface DefaultLayoutProps {
 }
 
 export function DefaultLayout({ children, frontMatter }: DefaultLayoutProps) {
+    const router = useRouter();
     const gameUrl = frontMatter.game;
+
+    // 从 URL 路径中提取当前语言
+    const getLocaleFromPath = (path: string): string => {
+        const match = path.match(/^\/([a-z]{2})(\/|$)/);
+        return match ? match[1] : 'en';
+    };
+
+    // 从路径中提取 gameSlug（例如：/en/games/cookie-clicker → cookie-clicker）
+    const extractGameSlug = (path: string): string | null => {
+        const match = path.match(/\/games\/([^\/\?#]+)/);
+        return match ? match[1] : null;
+    };
+
+    const locale = router.locale || getLocaleFromPath(router.asPath);
+    const gameSlug = extractGameSlug(router.asPath);
+
+    // 追踪游戏页面浏览（Hook 内部会检查是否为游戏页面）
+    useGamePageTracking(gameSlug || '', locale);
 
     return (
         <main className="min-h-screen bg-theme-bg-primary dark:bg-[#1a1a1a]">
@@ -25,6 +45,7 @@ export function DefaultLayout({ children, frontMatter }: DefaultLayoutProps) {
                                 title={frontMatter.title || 'Game'}
                                 cover={frontMatter.cover}
                                 thumbnail={frontMatter.thumbnail}
+                                gameSlug={gameSlug || undefined}
                             />
                         </div>
                         {/* 游戏下方广告区 */}

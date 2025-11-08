@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Icon } from '@iconify/react';
 import { useRouter } from 'nextra/hooks';
+import { trackCardClick } from '../utils/analytics';
 
 interface GameCardProps {
     title: string;
@@ -42,9 +43,17 @@ export function GameCard({
     const locale = router.locale || getLocaleFromPath(asPath);
     const fullHref = `/${locale}${href}`;
 
+    // 提取 gameSlug（例如：/games/cookie-clicker → cookie-clicker）
+    const gameSlug = href.replace('/games/', '');
+
+    // 追踪卡片点击
+    const handleCardClick = () => {
+        trackCardClick(gameSlug, locale);
+    };
+
     return (
         <div className="group bg-white dark:bg-[#242424] rounded-xl shadow-sm overflow-hidden transition-all hover:shadow-md">
-            <Link href={fullHref} className="block">
+            <Link href={fullHref} className="block" onClick={handleCardClick}>
                 {/* 封面图区域 */}
                 <div className="relative aspect-[16/9] overflow-hidden">
                     {/* 游戏封面 */}
