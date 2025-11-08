@@ -3,7 +3,7 @@ import Script from 'next/script';
 import '../theme/src/styles/globals.css';
 
 // 配置第三方服务的ID
-const GA_MEASUREMENT_ID = 'id'; // Google Analytics ID
+const GA_MEASUREMENT_ID = 'G-1LNW1E6Z75'; // Google Analytics ID
 const ADSENSE_ID = 'ca-pub-6527494970179313';       // Google AdSense ID 
 const CLARITY_ID = 'u2saeddd3y';       // Microsoft Clarity ID
 
@@ -45,6 +45,9 @@ export default function App({ Component, pageProps }: AppProps) {
     `
         }
       </Script>
+
+      {/* Ahrefs Web Analytics */}
+      <script src="https://analytics.ahrefs.com/analytics.js" data-key="ZpnDpVP5Wwpmx4SxSGnC0A" async></script>
     </>
   )
 } 
