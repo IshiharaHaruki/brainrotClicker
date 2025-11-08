@@ -1,7 +1,7 @@
 name = "game-launch-boost"
 compatibility_date = "2024-08-29"
 compatibility_flags = ["nodejs_compat"]
-pages_build_output_dir = ".vercel/output/static"
+pages_build_output_dir = "out"
 
 # ========================================
 # Pages Functions 配置
@@ -14,7 +14,7 @@ binding = "ANALYTICS_KV"
 id = "f5f38702fcd64c1db759786eae1c55bd"
 
 # 部署说明：
-# 1. 本地开发: npx wrangler pages dev .vercel/output/static
+# 1. 本地开发: npx wrangler pages dev out
 # 2. 部署方式: git push 自动触发 Cloudflare Pages 部署
-# 3. 或手动部署: npx wrangler pages deploy .vercel/output/static
+# 3. 或手动部署: npx wrangler pages deploy out
 # 4. KV 绑定也可以在 Cloudflare Dashboard > Pages > Settings > Functions > KV namespace bindings 中配置
