@@ -10,6 +10,7 @@ import { CategorySidebar } from '../components/CategorySidebar';
 import type { FrontMatter } from '../types';
 import { Icon } from '@iconify/react';
 import { ShareButtons } from '../components/ShareButtons';
+import { VideoPlayer } from '../components/VideoPlayer';
 
 interface FeaturedLayoutProps {
     children: React.ReactNode;
@@ -173,7 +174,7 @@ export function FeaturedLayout({ children, frontMatter, pageMap }: FeaturedLayou
                                     />
                                 </div>
                             )}
-                            
+
                             {/* 标题和分享按钮 */}
                             <div className="flex-grow">
                                 <h3 className="text-2xl font-bold text-theme-text-primary mb-4">
@@ -184,6 +185,16 @@ export function FeaturedLayout({ children, frontMatter, pageMap }: FeaturedLayou
                                 </div>
                             </div>
                         </div>
+
+                        {/* 游戏教程视频 - 可选展示 */}
+                        {frontMatter.video && (
+                            <VideoPlayer
+                                src={frontMatter.video}
+                                caption={frontMatter.videoCaption}
+                                title={frontMatter.videoTitle || `${frontMatter.title} - 游戏教程`}
+                                poster={frontMatter.thumbnail || frontMatter.cover}
+                            />
+                        )}
 
                         {/* 文章内容 */}
                         <article className="prose dark:prose-invert max-w-none">

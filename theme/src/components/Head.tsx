@@ -88,16 +88,14 @@ export function Head({ frontMatter, pageMap }: HeadProps): ReactElement {
         if (!themeConfig?.url) return cleanPath
 
         if (i18nEnabled && themeConfig.i18n) {
-            const defaultLocale = themeConfig.i18n.defaultLocale
-            // 从 cleanPath 中移除语言前缀，得到基础路径
-            // 使用词边界确保只匹配完整的语言代码，避免误匹配
-            const pathWithoutLocale = cleanPath.replace(new RegExp(`^/${actualLocale}(?=/|$)`), '') || '/'
+            const pathWithoutLocale =
+                cleanPath.replace(new RegExp(`^/${actualLocale}(?=/|$)`), "") || "/"
 
-            // 如果是默认语言，不添加语言前缀
-            const url = actualLocale === defaultLocale
-                ? `${themeConfig.url}${pathWithoutLocale}`
-                : `${themeConfig.url}/${actualLocale}${pathWithoutLocale}`
-            return url.replace(/\/$/, "")
+            const canonicalPath = `/${actualLocale}${pathWithoutLocale}`
+                .replace(/\/+/g, "/")
+                .replace(/\/$/, "") || `/${actualLocale}`
+
+            return `${themeConfig.url}${canonicalPath}`.replace(/\/$/, "")
         }
         return `${themeConfig.url}${cleanPath}`.replace(/\/$/, "")
     }, [cleanPath, actualLocale, i18nEnabled, themeConfig])
@@ -152,16 +150,14 @@ export function Head({ frontMatter, pageMap }: HeadProps): ReactElement {
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
             {/* 多语言 Alternate Links */}
-            {i18nEnabled && themeConfig?.i18n?.config?.map((lang) => {
-                if (lang.locale !== actualLocale) {
-                    // 从 cleanPath 中移除当前语言前缀，得到基础路径
-                    // 使用词边界确保只匹配完整的语言代码
-                    const pathWithoutLocale = cleanPath.replace(new RegExp(`^/${actualLocale}(?=/|$)`), '') || '/'
-
-                    // 为目标语言构建正确的路径
-                    const localePath = lang.locale === themeConfig.i18n?.defaultLocale
-                        ? pathWithoutLocale  // 默认语言不添加前缀
-                        : `/${lang.locale}${pathWithoutLocale}`  // 其他语言添加语言前缀
+            {i18nEnabled &&
+                themeConfig?.i18n?.config?.map((lang) => {
+                    const pathWithoutLocale =
+                        cleanPath.replace(new RegExp(`^/${actualLocale}(?=/|$)`), "") ||
+                        "/"
+                    const localePath = `/${lang.locale}${pathWithoutLocale}`
+                        .replace(/\/+/g, "/")
+                        .replace(/\/$/, "") || `/${lang.locale}`
 
                     return (
                         <link
@@ -171,14 +167,12 @@ export function Head({ frontMatter, pageMap }: HeadProps): ReactElement {
                             href={`${themeConfig.url}${localePath}`}
                         />
                     )
-                }
-                return null
-            })}
+                })}
             {i18nEnabled && themeConfig.url && themeConfig.i18n && (
                 <link
                     rel="alternate"
                     hrefLang="x-default"
-                    href={`${themeConfig.url}${cleanPath.replace(new RegExp(`^/${actualLocale}(?=/|$)`), '') || '/'}`}
+                    href={`${themeConfig.url}${`/${themeConfig.i18n.defaultLocale}${cleanPath.replace(new RegExp(`^/${actualLocale}(?=/|$)`), "") || "/"}`.replace(/\/+/g, "/").replace(/\/$/, "") || `/${themeConfig.i18n.defaultLocale}`}`}
                 />
             )}
 

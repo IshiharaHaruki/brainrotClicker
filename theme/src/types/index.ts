@@ -61,6 +61,9 @@ export interface FrontMatter {
   breadcrumb?: boolean;
   icon?: string;
   filter?: 'new' | 'hot';  // 游戏筛选标记：new（新游戏）或 hot（热门游戏）
+  video?: string;  // 游戏教程视频URL(支持R2或任何公开视频链接)
+  videoCaption?: string;  // 可选的视频字幕文件URL(.vtt格式)
+  videoTitle?: string;  // 可选的视频标题,用于显示
 }
 
 export interface PageData {
