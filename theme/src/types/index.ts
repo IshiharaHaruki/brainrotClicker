@@ -64,6 +64,7 @@ export interface FrontMatter {
   video?: string;  // 游戏教程视频URL(支持R2或任何公开视频链接)
   videoCaption?: string;  // 可选的视频字幕文件URL(.vtt格式)
   videoTitle?: string;  // 可选的视频标题,用于显示
+  videoPoster?: string;  // 可选的视频封面图URL(不指定则显示视频第一帧)
 }
 
 export interface PageData {

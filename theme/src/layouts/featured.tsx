@@ -192,7 +192,7 @@ export function FeaturedLayout({ children, frontMatter, pageMap }: FeaturedLayou
                                 src={frontMatter.video}
                                 caption={frontMatter.videoCaption}
                                 title={frontMatter.videoTitle || `${frontMatter.title} - 游戏教程`}
-                                poster={frontMatter.thumbnail || frontMatter.cover}
+                                poster={frontMatter.videoPoster}
                             />
                         )}
 
